@@ -10,22 +10,19 @@ class CNN(nn.Module):
   def __init__(self) -> None:
     super(CNN,self).__init__()
     self.cnn=nn.Sequential(nn.Conv2d(1,1,3,1),
-                           nn.Dropout(0.2),
-                           nn.ReLU(),
+                           nn.Tanh(),
                            nn.Conv2d(1,1,3,1),
-                           nn.Dropout(0.2),
-                           nn.ReLU(),
+                           nn.Tanh(),
                            nn.Flatten(),
                            nn.Linear(144,28),
-                           nn.Dropout(0.2),
-                           nn.ReLU(),
+                           nn.Tanh(),
                            nn.Linear(28,10),
                            nn.Softmax(1))
   def forward(self,x):
     return self.cnn(x)
 
 class config:
-    name='Activity5-exp1'
+    name='Activity5-exp2'
     epochs=10
     lr=1
     batch_size=32
@@ -48,4 +45,4 @@ class config:
     model_name='cnn_usps'
     model_file = os.path.join('models', model_name)
     scheduler=optim.lr_scheduler.StepLR(optimizer,step_size=2,gamma=0.1)
-    wandb_log=True
+    wandb_log=False
