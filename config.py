@@ -11,10 +11,10 @@ class CNN(nn.Module):
     super(CNN,self).__init__()
     self.cnn=nn.Sequential(nn.Conv2d(1,1,3,1),
                            nn.Tanh(),
-                           nn.Conv2d(1,1,3,1),
+                           nn.Conv2d(1,1,5,1),
                            nn.Tanh(),
                            nn.Flatten(),
-                           nn.Linear(144,28),
+                           nn.Linear(100,28),
                            nn.Tanh(),
                            nn.Linear(28,10),
                            nn.Softmax(1))
@@ -22,7 +22,7 @@ class CNN(nn.Module):
     return self.cnn(x)
 
 class config:
-    name='Activity5-exp2'
+    name='Activity5-exp3'
     epochs=10
     lr=1
     batch_size=32
